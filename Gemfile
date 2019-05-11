@@ -10,6 +10,8 @@ gem 'activerecord'
 
 # For interacting with 3rd party API
 gem 'faraday'
-
+# For parsing response
+gem 'oj'
 # For writing rspecs
 gem 'rspec'
+gem 'shoulda-matchers'
