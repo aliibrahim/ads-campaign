@@ -1,0 +1,5 @@
+# config/database.yml
+host: 'localhost'
+adapter: postgresql
+encoding: unicode
+database: 'ruby_task'
