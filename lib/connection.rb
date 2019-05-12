@@ -11,6 +11,8 @@ module Connection
 
   attr_accessor :response
 
+  API_REQUESTS_QUOTA_REACHED_MESSAGE = 'You have reached limit to access the API'
+
   def client(host)
     @client ||= Faraday.new(host) do |client|
       client.request :url_encoded
