@@ -16,6 +16,7 @@
 require_relative "../app"
 require 'shoulda/matchers'
 require 'webmock/rspec'
+require 'database_cleaner'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -54,6 +55,10 @@ RSpec.configure do |config|
 
   config.include(Shoulda::Matchers::ActiveModel, type: :model)
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
+
+
+  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.clean
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.

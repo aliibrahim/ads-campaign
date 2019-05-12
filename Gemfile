@@ -18,4 +18,5 @@ group :test do
   gem 'rspec'
   gem 'shoulda-matchers'
   gem 'webmock'
+  gem 'database_cleaner'
 end
