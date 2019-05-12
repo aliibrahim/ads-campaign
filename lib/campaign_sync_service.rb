@@ -1,5 +1,7 @@
 require_relative './connection'
 require 'json'
+require 'dotenv/load'
+
 class CampaignSyncService
 
   class << self
@@ -14,6 +16,7 @@ class CampaignSyncService
     def perform
       raise ArgumentError, "Ads Sync Service is not enabled" unless ads_sync_enabled?
       @ads = get_ads['ads']
+      get_campaign_differences
     end
 
     private
@@ -24,6 +27,18 @@ class CampaignSyncService
 
     def get_ads
       request(http_method: :get, host: API_HOST, endpoint: ADS_ENDPOINT)
+    end
+
+    def get_campaign_differences
+      differences = []
+      ads.each do |remote_campaign|
+        local_campaign  = Campaign.find_by(external_reference: remote_campaign['reference'])
+        if local_campaign
+          difference   = local_campaign.diff(remote_campaign)
+          differences << difference unless difference.empty?
+        end
+      end
+      differences.to_json
     end
 
   end
