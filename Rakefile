@@ -5,7 +5,7 @@ require "pg"
 
 namespace :db do
 
-  db_config       = YAML::load(File.open('config/database.yml'))
+  db_config       = YAML::load(File.open('config/database.yml'))[ENV['APP_ENV'] || 'development']
   db_config_admin = db_config.merge({'database' => 'postgres', 'schema_search_path' => 'public'})
 
   desc "Create the database"

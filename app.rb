@@ -1,7 +1,7 @@
 require 'active_record'
 
 # Initialize the database connection
-db_config       = YAML::load(File.open('config/database.yml'))
+db_config       = YAML::load(File.open('config/database.yml'))[ENV['APP_ENV'] || 'development']
 ActiveRecord::Base.establish_connection(db_config)
 
 # Require all files for the project
