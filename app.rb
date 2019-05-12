@@ -1,4 +1,5 @@
 require 'active_record'
+require 'dotenv/load'
 
 # Initialize the database connection
 db_config       = YAML::load(File.open('config/database.yml'))[ENV['APP_ENV'] || 'development']

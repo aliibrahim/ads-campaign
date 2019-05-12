@@ -20,3 +20,6 @@ group :test do
   gem 'webmock'
   gem 'database_cleaner'
 end
+
+# For reading environment variables
+gem 'dotenv'

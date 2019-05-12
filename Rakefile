@@ -2,6 +2,7 @@
 
 require "active_record"
 require "pg"
+require 'dotenv/load'
 
 namespace :db do
 
