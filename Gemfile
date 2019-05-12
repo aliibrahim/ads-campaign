@@ -12,6 +12,10 @@ gem 'activerecord'
 gem 'faraday'
 # For parsing response
 gem 'oj'
+
 # For writing rspecs
-gem 'rspec'
-gem 'shoulda-matchers'
+group :test do
+  gem 'rspec'
+  gem 'shoulda-matchers'
+  gem 'webmock'
+end
