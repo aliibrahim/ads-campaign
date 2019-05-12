@@ -1,6 +1,5 @@
 ### Introduction
-First of all, thank you for taking the time to complete this test task!
-The purpose of the task is to get an idea of your development style: the way you structure code, automated tests you add etc.
+This is the Ads Campaign Service that find differences between local and remote campaigns.
 
 ### Task background
 
@@ -19,26 +18,12 @@ Due to various types of failures (_Ad Service_ inavailability, errors in campaig
 local `Campaigns` can fall out of sync with _Ad Service_.
 So we need a way to detect discrepancies between local and remote state.
 
-### TODOs
-1. Develop a [Service](https://medium.com/selleo/essential-rubyonrails-patterns-part-1-service-objects-1af9f9573ca1)(as in _Service Object_ pattern),
+### TODOs Completed
+1. Developed a [Service](https://medium.com/selleo/essential-rubyonrails-patterns-part-1-service-objects-1af9f9573ca1)(as in _Service Object_ pattern),
 which would get campaigns from external JSON API([example link](https://mockbin.org/bin/fcb30500-7b98-476f-810d-463a0b8fc3df)) and detect discrepancies between local and remote state.
-2. The purpose of the task is to work on business logic, so please don't create a Rails app. Rather stucture your project the following way:
-```
-|-- .ruby-version
-|-- .ruby-gemset
-|-- Gemfile
-|-- lib
-    |-- source files go here
-|-- spec
-    |-- specs go here
-```
-You're free to add gems you need(including those which are part of Rails).
-
-3. You don't have to put all your code into one class. Please use your best judgment to split the code up into separate components.
-4. **Note** Don't fork this repository. Create you own public repository and send us a link to it. You may describe some of the assumptions you had in the README file of your repository.
 
 ### Service output format
-You're free to choose the output format which makes sense to you, we suggest the following:
+The output of the service is as follows:
 ```
 [
   {
@@ -56,10 +41,7 @@ You're free to choose the output format which makes sense to you, we suggest the
   }
 ]
 ```
-
-**Have fun!**
-
-### Some helpful scripts
+### Some helpful scripts that can be run to setup the local database
 
 Usage
 ```
@@ -70,3 +52,15 @@ $ rake db:reset # combination of the upper three
 $ rake db:schema # creates a schema file of the current database
 $ rake g:migration your_migration # generates a new migration file
 ```
+
+### To run the test suite
+
+Usage
+```
+$ APP_ENV=test rake db:create db:migrate
+$ APP_ENV=test rspec spec
+```
+
+
+### Local Environment
+The configuration of the environment is read from the local `.env` file via `dotenv` gem
